@@ -1,19 +1,6 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Venue extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  Venue.init({
+  const Venue = sequelize.define('Venue', {
     pictureUrl: DataTypes.TEXT,
     name: DataTypes.STRING,
     address: DataTypes.TEXT,
@@ -22,9 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     country: DataTypes.STRING,
     lat: DataTypes.INTEGER,
     lon: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Venue',
-  });
+  }, {});
+  Venue.associate = function(models) {
+    // associations can be defined here
+    Venue.hasMany(models.Concert, { foreingKey: "venueId" })
+    Venue.hasMany(models.WatchList, { foreingKey: "venueId" })
+    Venue.hasMany(models.VenueCommemnt, { foreingKey: "venueId" })
+  };
   return Venue;
 };

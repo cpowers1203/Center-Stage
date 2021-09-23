@@ -1,26 +1,16 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class WatchList extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  WatchList.init({
+  const WatchList = sequelize.define('WatchList', {
     userId: DataTypes.INTEGER,
     artistId: DataTypes.INTEGER,
     venueId: DataTypes.INTEGER,
     concertId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'WatchList',
-  });
+  }, {});
+  WatchList.associate = function(models) {
+    // associations can be defined here
+    WatchList.belongsTo(models.Artist, { foreignKey: "artistId" })
+    WatchList.belongsTo(models.Venue, { foreignKey: "venueId" })
+    WatchList.belongsTo(models.User, {foreignKey: "userId"})
+  };
   return WatchList;
 };

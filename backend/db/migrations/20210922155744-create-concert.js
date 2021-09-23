@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('FollowArtists', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('Concerts', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,8 +11,11 @@ module.exports = {
       artistId: {
         type: Sequelize.INTEGER
       },
-      userId: {
+      venueId: {
         type: Sequelize.INTEGER
+      },
+      date: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -24,7 +27,7 @@ module.exports = {
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('FollowArtists');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Concerts');
   }
 };

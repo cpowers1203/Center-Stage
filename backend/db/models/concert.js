@@ -1,25 +1,14 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Concert extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  };
-  Concert.init({
+  const Concert = sequelize.define('Concert', {
     artistId: DataTypes.INTEGER,
     venueId: DataTypes.INTEGER,
     date: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'Concert',
-  });
+  }, {});
+  Concert.associate = function(models) {
+    // associations can be defined here
+    Concert.belongsTo(models.Venue, { foreignKey: "venueId" })
+    Concert.belongsTo(models.Artist, {foreignKey: "artistId"})
+  };
   return Concert;
 };

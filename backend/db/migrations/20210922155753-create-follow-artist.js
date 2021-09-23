@@ -1,23 +1,17 @@
 'use strict';
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('WatchLists', {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('FollowArtists', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        type: Sequelize.INTEGER
-      },
       artistId: {
         type: Sequelize.INTEGER
       },
-      venueId: {
-        type: Sequelize.INTEGER
-      },
-      concertId: {
+      userId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -30,7 +24,7 @@ module.exports = {
       }
     });
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('WatchLists');
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('FollowArtists');
   }
 };
