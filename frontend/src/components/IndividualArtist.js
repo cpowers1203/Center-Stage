@@ -8,8 +8,8 @@ function IndividualArtist() {
     const dispatch = useDispatch()
     const { artistId } = useParams()
     const currentUser = useSelector(state => state.session.user)
-    const artist = useSelector(state => state.artists.artists[artistId])
-    const follow = useSelector(state => state.artists.artists[artistId]?.followers?.[currentUser.id])
+    const artist = useSelector(state => state.artists.all[artistId])
+    const follow = useSelector(state => state.artists.following[artistId])
 
     useEffect(() => {
         if (!artistId) return
@@ -23,11 +23,12 @@ function IndividualArtist() {
   const handleUnfollow = async(e) => {
     e.preventDefault()
     await dispatch(destroyFollow(currentUser.id, artistId))
+      
     }   
 
     const handleFollow = async(e) => {
-    e.preventDefault()
-    await dispatch(postFollow(currentUser.id, artistId))
+        e.preventDefault()
+        await dispatch(postFollow(currentUser.id, artist))
     }
 
 

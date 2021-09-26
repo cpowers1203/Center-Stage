@@ -6,7 +6,7 @@ import { getArtists } from '../store/artist'
 
 function Artists() {
     const dispatch = useDispatch()
-    const artists = useSelector(state => Object.values(state.artists.artists))
+    const artists = useSelector(state => Object.values(state.artists.all))
 
     useEffect(() => {
         (async () => {

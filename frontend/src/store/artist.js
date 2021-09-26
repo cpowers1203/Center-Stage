@@ -1,3 +1,5 @@
+ import { csrfFetch } from "./csrf"
+
 const GET_ALL_ARTISTS = 'artists/GET_ALL_ARTISTS'
 const GET_ONE_ARTIST = 'artists/GET_ONE_ARTIST'
 const ADD_FOLLOW = 'artists/ADD_FOLLOW'
@@ -12,10 +14,10 @@ const getOneArtist = (artist) => ({
     artist
 })
 
-const addFollow = (userId, artistId) => ({
+const addFollow = (userId, artist) => ({
     type: ADD_FOLLOW,
     payload:{
-        userId, artistId
+        userId, artist
     }
 })
 
@@ -44,43 +46,53 @@ export const getIndividualArtist = (artistId) => async (dispatch) => {
     }
 }
 
-export const postFollow = (userId, artistId) => async(dispatch) => {
-    const res = await fetch(`/api/artists/${artistId}/follow`, {
+export const postFollow = (userId, artist) => async(dispatch) => {
+    const res = await csrfFetch(`/api/artists/${artist.id}/follow`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        // headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({userId})
     })
     if (res.ok) {
-        dispatch(addFollow(userId, artistId))
+        dispatch(addFollow(userId, artist.id))
     }
     return
 }
 
 export const destroyFollow = (userId, artistId) => async(dispatch) => {
-    const res = await fetch(`/api/artists/${artistId}/unfollow`)
+    const res = await csrfFetch(`/api/artists/${artistId}/unfollow`, {
+        method: 'POST',
+        body: JSON.stringify({userId})
+    })
     if (res.ok) {
         dispatch(removeFollow( userId, artistId))
     }
     return
 }
 
-const initialState = { artists: {}, venues: {} }
+const initialState = { all: {}, following: {} }
 const artistReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
         case GET_ALL_ARTISTS:
             Object.values(action.artists).forEach(artist => {
-                newState.artists[artist.id] = artist
+                newState.all[artist.id] = artist
             })
             return newState
         case GET_ONE_ARTIST:
-            newState.artists[action.artist.id] = action.artist
+            newState.all[action.artist.id] = action.artist
             return newState
         case ADD_FOLLOW:
             const userId = action.payload.userId
-            const artistId = action.payload.artistId
-            newState.artists[artistId].followers[userId] = { userId, artistId }
+            const artistId = action.payload.artist
+            console.log(userId)
+            console.log(artistId)
+            console.log(action.payload.artist)
+            newState.following[action.payload.artist] = { userId, artistId }
             return newState
+        case REMOVE_FOLLOW:
+            delete newState.following[action.payload.artist.id]
+            return newState
+
         default: return state
     }
 }

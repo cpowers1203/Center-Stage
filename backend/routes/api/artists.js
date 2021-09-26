@@ -42,7 +42,7 @@ router.post('/:id(\\d+)/unfollow', asyncHandler(async (req, res) => {
         followingArtist.forEach(element => {
              element.destroy()
         });
-        return res.json('BIG SUCCESS')
+        
     }
 }))
 module.exports = router

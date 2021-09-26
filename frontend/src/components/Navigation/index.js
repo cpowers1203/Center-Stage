@@ -28,6 +28,9 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
       </li>
+      <li>
+        <NavLink exact to="/artists">Artists</NavLink>
+      </li>
     </ul>
   );
 }
