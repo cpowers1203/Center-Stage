@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIndividualArtist, postFollow, destroyFollow } from '../store/artist'
+import { getIndividualArtist, postFollow, destroyFollow, getFollowInfo } from '../store/artist'
 import { useParams } from 'react-router-dom'
 
 
@@ -15,8 +15,9 @@ function IndividualArtist() {
         if (!artistId) return
         (async () => {
             await dispatch(getIndividualArtist(artistId))
+            await dispatch(getFollowInfo(currentUser.id, artistId))
         })()
-    }, [artistId, dispatch])
+    }, [currentUser.id, artistId, dispatch])
     
 
 
