@@ -1,4 +1,4 @@
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from "./csrf"
 
 const GET_ALL_VENUES = 'venues/GET_ALL_VENUES'
 const GET_ONE_VENUE = 'venues/GET_ONE_VENUE'
@@ -24,9 +24,10 @@ export const getVenues = () => async (dispatch) => {
 }
 
 export const getIndividualVenue = (venueId) => async (dispatch) => {
-    const res = await fetch(`/api/venues/${venueId}`)
+    const res = await csrfFetch(`/api/venues/${venueId}`)
     if (res.ok) {
         const venue = await res.json()
+        console.log(venue)
         dispatch(getOneVenue(venue))
     }
 }

@@ -58,13 +58,13 @@ export const postFollow = (userId, artist) => async(dispatch) => {
     return
 }
 
-export const destroyFollow = (userId, artistId) => async(dispatch) => {
-    const res = await csrfFetch(`/api/artists/${artistId}/unfollow`, {
+export const destroyFollow = (userId, artist) => async(dispatch) => {
+    const res = await csrfFetch(`/api/artists/${artist.id}/unfollow`, {
         method: 'POST',
         body: JSON.stringify({userId})
     })
     if (res.ok) {
-        dispatch(removeFollow( userId, artistId))
+        dispatch(removeFollow( userId, artist.id))
     }
     return
 }
@@ -90,7 +90,8 @@ const artistReducer = (state = initialState, action) => {
             newState.following[action.payload.artist] = { userId, artistId }
             return newState
         case REMOVE_FOLLOW:
-            delete newState.following[action.payload.artist.id]
+            console.log(action.payload.artistId)
+            delete newState.following[action.payload.artistId]
             return newState
 
         default: return state

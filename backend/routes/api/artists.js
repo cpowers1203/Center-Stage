@@ -44,5 +44,6 @@ router.post('/:id(\\d+)/unfollow', asyncHandler(async (req, res) => {
         });
         
     }
+    return res.json('deleted')
 }))
 module.exports = router

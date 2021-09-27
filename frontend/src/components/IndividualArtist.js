@@ -22,7 +22,7 @@ function IndividualArtist() {
 
   const handleUnfollow = async(e) => {
     e.preventDefault()
-    await dispatch(destroyFollow(currentUser.id, artistId))
+    await dispatch(destroyFollow(currentUser.id, artist))
       
     }   
 
