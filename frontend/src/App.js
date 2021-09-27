@@ -7,6 +7,9 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import { Modal } from './context/Modal';
 import Artists from './components/Artist';
+import IndividualArtist from './components/IndividualArtist';
+import Venues from './components/Venues';
+import IndividualVenue from './components/IndividualVenue';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,8 +35,17 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
-          <Route>
+          <Route path='/artists' exact={true}>
             <Artists />
+          </Route>
+          <Route path='/artists/:artistId' exact={true} >
+            <IndividualArtist />
+          </Route>
+          <Route path='/venues' exact={true}>
+            <Venues />
+          </Route>
+          <Route path='/venues/:venueId' exact={true}>
+            <IndividualVenue />
           </Route>
         </Switch>
       )}
