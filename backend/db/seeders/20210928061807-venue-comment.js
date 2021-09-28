@@ -5,7 +5,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
    return queryInterface.bulkInsert('VenueComments', [{
         comment: faker.lorem.sentence(),
-        venueId: faker.datatype.number({min: 1, max: 10}),
+        venueId: 9,
         userId: faker.datatype.number({min:1, max:30})
       }], {});
   },

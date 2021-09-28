@@ -8,7 +8,7 @@ function IndividualArtist() {
     const dispatch = useDispatch()
     const { artistId } = useParams()
     const currentUser = useSelector(state => state.session.user)
-    const userId = currentUser.id
+    const userId = currentUser?.id
     const artist = useSelector(state => state.artists.all[artistId])
     const follow = useSelector(state => state.artists.following[artistId])
 

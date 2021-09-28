@@ -18,8 +18,8 @@ function Artists() {
     return (
 
 
-        <div className="artists__wrapper">
-            <div className="artists__allArtists">
+        <div className="artist__wrapper">
+            <div className="artist__allArtists">
                 <ul className="artists__ul">
                 {artists.map((artist) => 
                     <li key={artist.id} className="artists__li">
