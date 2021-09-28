@@ -63,7 +63,7 @@ export const getFollowInfo = (userId, artistId) => async (dispatch) => {
     if (res.ok) {
         const {userId, artistId} = await res.json()
         dispatch(getFollow(userId, artistId))
-    }
+    } 
 }
 
 export const postFollow = (userId, artist) => async(dispatch) => {
@@ -104,7 +104,7 @@ const artistReducer = (state = initialState, action) => {
         case GET_FOLLOW:
             const userId = action.payload.userId
             const artistId = action.payload.artistId
-            console.log("AWAWAWAWAWAWA", artistId)
+            
             newState.following[artistId] = {userId, artistId}
             return newState
         case ADD_FOLLOW:
