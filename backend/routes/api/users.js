@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, FollowArtist } = require("../../db/models");
 
 const router = express.Router();
 
@@ -43,5 +43,14 @@ router.post(
     });
   }),
 );
+
+router.get('/:id(\\d+)/artists/:artistId(\\d+)/following', asyncHandler(async (req, res) => {
+  const { id, artistId } = req.params
+  const following = await FollowArtist.findOne({ where: { userId: id, artistId } })
+  if (!following) return res.json('')
+  if (following) {
+    return res.json({id, artistId})
+  }
+}))
 
 module.exports = router;

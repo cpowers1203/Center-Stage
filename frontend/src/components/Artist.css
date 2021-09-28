@@ -1,4 +1,4 @@
-.artist__wrapper{
+.artists__wrapper{
     /* border: 1px dotted black; */
     /* padding: 10px;
     margin: 10px; */
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.artist__allArtists{
+.artists__allArtists{
     /* border: 3px dotted red; */
     display: flex;
     flex-wrap: wrap;
