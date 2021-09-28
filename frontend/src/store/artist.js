@@ -2,6 +2,7 @@
 
 const GET_ALL_ARTISTS = 'artists/GET_ALL_ARTISTS'
 const GET_ONE_ARTIST = 'artists/GET_ONE_ARTIST'
+const GET_FOLLOW = 'artists/GET_FOLLOW'
 const ADD_FOLLOW = 'artists/ADD_FOLLOW'
 const REMOVE_FOLLOW = 'artists/REMOVE_FOLLOW'
 
@@ -28,6 +29,14 @@ const removeFollow = (userId, artistId) => ({
     }
 })
 
+const getFollow = (userId, artistId) => ({
+    type: GET_FOLLOW,
+    payload: {
+        userId, artistId
+    }
+    
+})
+
 export const getArtists = () => async (dispatch) => {
     const res = await fetch('/api/artists')
     if (res.ok) {
@@ -44,6 +53,17 @@ export const getIndividualArtist = (artistId) => async (dispatch) => {
         dispatch(getOneArtist(artist))
         return artist
     }
+}
+
+export const getFollowInfo = (userId, artistId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/follow-artist/${artistId}`, {
+        method: 'POST',
+        body: JSON.stringify({userId})
+    })
+    if (res.ok) {
+        const {userId, artistId} = await res.json()
+        dispatch(getFollow(userId, artistId))
+    } 
 }
 
 export const postFollow = (userId, artist) => async(dispatch) => {
@@ -81,13 +101,16 @@ const artistReducer = (state = initialState, action) => {
         case GET_ONE_ARTIST:
             newState.all[action.artist.id] = action.artist
             return newState
-        case ADD_FOLLOW:
+        case GET_FOLLOW:
             const userId = action.payload.userId
-            const artistId = action.payload.artist
-            console.log(userId)
-            console.log(artistId)
-            console.log(action.payload.artist)
-            newState.following[action.payload.artist] = { userId, artistId }
+            const artistId = action.payload.artistId
+            
+            newState.following[artistId] = {userId, artistId}
+            return newState
+        case ADD_FOLLOW:
+            const userId2 = action.payload.userId
+            const artistId2 = action.payload.artist
+            newState.following[artistId2] =  {userId: userId2, artistId: artistId2}
             return newState
         case REMOVE_FOLLOW:
             console.log(action.payload.artistId)

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getIndividualArtist, postFollow, destroyFollow } from '../store/artist'
+import { getIndividualArtist, postFollow, destroyFollow, getFollowInfo } from '../store/artist'
 import { useParams } from 'react-router-dom'
 
 
@@ -8,15 +8,18 @@ function IndividualArtist() {
     const dispatch = useDispatch()
     const { artistId } = useParams()
     const currentUser = useSelector(state => state.session.user)
+    const userId = currentUser.id
     const artist = useSelector(state => state.artists.all[artistId])
     const follow = useSelector(state => state.artists.following[artistId])
 
     useEffect(() => {
         if (!artistId) return
+        if (!userId) return
         (async () => {
             await dispatch(getIndividualArtist(artistId))
+            await dispatch(getFollowInfo(userId, artistId))
         })()
-    }, [artistId, dispatch])
+    }, [userId, artistId, dispatch])
     
 
 
@@ -40,8 +43,8 @@ function IndividualArtist() {
                     <img className="artist__image" src={artist?.pictureUrl} alt =""></img>
                 </div>
                 <div className="artist__followButton">
-                    { currentUser.id && follow && <button onClick={e => handleUnfollow(e)}>Unfollow</button> }
-                    { currentUser.id && !follow && <button onClick={e => handleFollow(e)}>Follow</button>}
+                    { userId && follow && <button onClick={e => handleUnfollow(e)}>Unfollow</button> }
+                    { userId && !follow && <button onClick={e => handleFollow(e)}>Follow</button>}
                 </div>
             </div>
         </div>
