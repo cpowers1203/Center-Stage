@@ -1,54 +1,39 @@
-body {
-    padding: 0;
-    margin: 0;
-}
-
-.artists__wrapper{
-    /* border: 1px dotted black; */
-    /* padding: 10px;
-    margin: 10px; */
+.venues__wrapper {
     display: flex;
     width: 100%;
     justify-content: center;
     text-decoration: none;
-    
 }
 
-.artists__allArtists{
-    /* border: 3px dotted red; */
+.venues__allVenues {
     display: flex;
     flex-wrap: wrap;
     max-width: 50%;
     padding: none;
     text-decoration: none;
-
 }
 
-.artists__ul {
+.venues__ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     margin: 0px;
     padding: 0px;
     text-decoration: none;
-    margin-left: 35px;
 }
 
-.artists__li {
+.venues__li {
     flex-grow: 1;
     margin: 8px;
     max-width: 200px;
     text-decoration: none;
-    
-    /* background-color: black; */
-    /* above line if commented in will darken on hover */
-  }
+}
 
-  .artists__li a {
+.venues__li a {
       text-decoration: none;
   } 
 
-.artists__image {
+.venues__image {
     justify-content: center;
     align-items: center;
     width: 200px;
@@ -58,7 +43,7 @@ body {
     text-decoration: none;
 }
 
-.artists__name {
+.venues__name {
     text-align: center;
     text-decoration: none;
     color: red;

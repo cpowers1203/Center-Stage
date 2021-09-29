@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
-import logo from "../../logo.png"
+import logo from "../../logo.jpg"
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -40,7 +40,7 @@ function Navigation({ isLoaded }){
         <div className="navbar__venue-link">
           <NavLink exact to ="/venues">Venues</NavLink>
         </div>
-        <div>
+        <div className="navbar__buttons">
           {isLoaded && sessionLinks}
         </div>
       </div>

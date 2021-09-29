@@ -20,17 +20,23 @@ function LoginForm() {
     );
   };
 
+  const loginDemo = async (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential: 'demo@user.io', password: 'password'}));
+
+  };
+
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+      <h1 className="login__h1">Log In</h1>
+      <form onSubmit={handleSubmit} className="login__form">
+        <ul className="login__errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
         <label>
-          Username or Email
+          Username
           <input
             type="text"
             value={credential}
@@ -48,6 +54,7 @@ function LoginForm() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button onClick={loginDemo}>Demo</button>
       </form>
     </>
   );

@@ -56,13 +56,10 @@ export const getIndividualArtist = (artistId) => async (dispatch) => {
 }
 
 export const getFollowInfo = (userId, artistId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/follow-artist/${artistId}`, {
-        method: 'POST',
-        body: JSON.stringify({userId})
-    })
-    if (res.ok) {
-        const {userId, artistId} = await res.json()
-        dispatch(getFollow(userId, artistId))
+    const res = await csrfFetch(`/api/users/${userId}/artists/${artistId}/following`)
+    const payload = await res.json()
+    if (payload) {
+        dispatch(getFollow(payload.userId, payload.artistId))
     } 
 }
 

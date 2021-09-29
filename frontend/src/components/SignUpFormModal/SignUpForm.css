@@ -1,26 +1,27 @@
-.login__h1 {
+.signup__h1 {
     display: flex;
     justify-content: center;
 }
 
-.login__errors li{
-    color: red
+.signup__errors li{
+    color: red;
 }
-.login__form {
+
+.signup__form {
     display: flex;
     flex-direction: column;
     margin: 10px;
 }
 
-.login__form label{
+.signup__form label{
     margin: 10px;
 }
 
-.login__form input{
+.signup__form input{
     float: right;
 }
 
-.login__form button {
+.signup__form button {
     background-color: red;
     color: white;
     border: 5px white;
