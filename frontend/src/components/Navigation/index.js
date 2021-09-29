@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
-import logo from "../../logo.png"
+import logo from "../../logo.jpg"
 import './Navigation.css';
 
 function Navigation({ isLoaded }){

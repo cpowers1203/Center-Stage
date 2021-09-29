@@ -36,13 +36,23 @@ router.get('/:id(\\d+)/concerts', asyncHandler(async (req, res) => {
 router.post('/:id(\\d+)/comments', asyncHandler(async (req, res) => {
     const venueId = req.params
     const { userId, comment } = req.body
-    commentSuccess = await VenueComment.create({ comment, userId, venueId })
+    const commentSuccess = await VenueComment.create({ comment, userId, venueId })
     return res.json(commentSuccess)
 }))
 
+router.put('/:id(\\d+)/comments/:commentId(\\d+)', asyncHandler(async (req, res) => {
+    const {id: venueId, commentId} = req.params
+    const { comment } = req.body
+    const prevComment = await VenueComment.findByPk(commentId)
+    if (prevComment) {
+        updateSuccess = await prevComment.update({ venueId, comment })
+        return res.json(updateSuccess)
+    }
+}))
+
 router.post('/:id(\\d+)/comments/:commentId(\\d+)', asyncHandler(async (req, res) => {
-    const { venueId, commentId } = req.params
-    const comment = VenueComment.findByPk(commentId)
+    const { id: commentId, venueId: id } = req.params
+    const comment = await VenueComment.findByPk(commentId)
     if (!comment) return res.json('Comment Doesnt Exist!')
     if (comment) {
         comment.destroy()

@@ -1,17 +1,17 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-// import { editAComment } from "../store/image"
+import { editAComment } from "../store/venues"
 import { useParams } from "react-router-dom"
 
 function EditCommentForm({ oldComment, hideEdit, commentId }) {
-    const { imageId } = useParams();
+    const { venueId } = useParams();
     const dispatch = useDispatch();
 
     const [commentBody, setCommentBody] = useState(oldComment)
 
     const submitEdit = async(e) => {
         e.preventDefault();
-        // await dispatch(editAComment(commentBody, commentId, imageId))
+        await dispatch(editAComment(venueId, commentId, commentBody))
         hideEdit(e)
     }
 

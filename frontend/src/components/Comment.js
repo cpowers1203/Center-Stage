@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getIndividualVenueComments } from '../store/venues';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +10,7 @@ import SingleComment from './SingleComment';
 function Comment() {
     const {venueId} = useParams()
     const dispatch = useDispatch()
+    const [comments2, setComments2] = useState([])
 
     useEffect(() => {
         (async () => {

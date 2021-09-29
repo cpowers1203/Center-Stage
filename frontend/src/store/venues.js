@@ -4,6 +4,7 @@ const GET_ALL_VENUES = 'venues/GET_ALL_VENUES'
 const GET_ONE_VENUE = 'venues/GET_ONE_VENUE'
 const GET_VENUE_COMMENTS = 'venues/GET_VENUE_COMMENTS'
 const ADD_VENUE_COMMENT = 'venues/ADD_VENUE_COMMENT'
+const EDIT_COMMENT = 'venue/EDIT_COMMENT'
 const REMOVE_COMMENT = 'venues/REMOVE_COMMENT'
 
 const getAllVeunes = (venues) => ({
@@ -26,6 +27,11 @@ const addVenueComment = (userId, comment, venueId) => ({
     payload: {
         userId, comment, venueId
     }
+})
+
+const editVenueComment = (comment) => ({
+    type: EDIT_COMMENT,
+    comment
 })
 
 const deleteVenueComment = (venueId, commentId) => ({
@@ -75,6 +81,18 @@ export const addIndividualVenueComment = (userId, comment, venueId) => async (di
     return
 }
 
+export const editAComment = (venueId, commentId, comment) => async (dispatch) => {
+    const res = await csrfFetch(`/api/venues/${venueId}/comments/${commentId}`, {
+        method: "PUT",
+        body: JSON.stringify({comment})
+    })
+    if (res.ok) {
+        const updatedComment = await res.json()
+        dispatch(editVenueComment(updatedComment))
+    }
+    return
+}
+
 export const deleteComment = (venueId, commentId) => async (dispatch) => {
     const res = await csrfFetch(`/api/venues/${venueId}/comments/${commentId}`, {
         method: 'POST'
@@ -103,8 +121,14 @@ const venueReducer = (state = initialState, action) => {
             })
             return newState
         case ADD_VENUE_COMMENT:
-            
-        
+            newState.comments[action.payload.comment.id] = action.payload.comment
+            return newState
+        case EDIT_COMMENT:
+            newState.comments[action.comment.id] = action.comment
+            return newState
+        case REMOVE_COMMENT:
+            delete newState.comments[action.payload.commentId]
+            return newState
         default: return state
     }
 }
