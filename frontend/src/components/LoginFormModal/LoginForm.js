@@ -20,6 +20,12 @@ function LoginForm() {
     );
   };
 
+  const loginDemo = async (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential: 'demo@user.io', password: 'password'}));
+
+  };
+
   return (
     <>
       <h1 className="login__h1">Log In</h1>
@@ -48,6 +54,7 @@ function LoginForm() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button onClick={loginDemo}>Demo</button>
       </form>
     </>
   );

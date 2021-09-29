@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteComment } from '../store/venues';
-// import "./SingleComment.css"
+import "./SingleComment.css"
 import EditCommentForm from './EditCommentForm';
 
 function SingleComment({ comment }) {
@@ -26,24 +26,39 @@ function SingleComment({ comment }) {
     }
 
     let commentContent;
-    if (showEdit){
-        commentContent = <EditCommentForm oldComment={comment.comment} hideEdit={hideEdit} commentId={comment.id}/>
-    }
-    else{
-        commentContent = (
-            <>
-                <div className="comment-body-container">
-                    <div className="comment-body-p">{comment.comment}</div>
-                </div>
-            {
-                comment?.userId === user.id &&
-                <div className="edit-comment-btns">
-                    <button className="edit-comment-btn" onClick={displayEdit}>edit</button>
-                    <button onClick={(e) => handleDelete(e)}>delete</button>
-                </div>
-            }
-        </>
-        )
+    if (user) {
+        if (showEdit) {
+            commentContent = <EditCommentForm oldComment={comment.comment} hideEdit={hideEdit} commentId={comment.id} />
+        }
+        else {
+            commentContent = (
+                <>
+                    <div className="comment-body-container">
+                        <div className="comment-body-p">{comment.comment}</div>
+                    </div>
+                    {
+                        comment?.userId === user.id &&
+                        <div className="edit-comment-btns">
+                            <button className="edit-comment-btn" onClick={displayEdit}>edit</button>
+                            <button className="delete-comment-btn" onClick={(e) => handleDelete(e)}>delete</button>
+                        </div>
+                    }
+                </>
+            )
+        }
+    } else {
+        if (showEdit) {
+            commentContent = <EditCommentForm oldComment={comment.comment} hideEdit={hideEdit} commentId={comment.id} />
+        }
+        else {
+            commentContent = (
+                <>
+                    <div className="comment-body-container">
+                        <div className="comment-body-p">{comment.comment}</div>
+                    </div>
+                </>
+            )
+        }
     }
 
 

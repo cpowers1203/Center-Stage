@@ -11,6 +11,11 @@
     text-decoration: none;
 }
 
+.navbar__container a{
+    color: white;
+    text-decoration: none;
+}
+
 .navbar__wrapper{
 
     display: flex;

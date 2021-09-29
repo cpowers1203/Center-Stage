@@ -1,3 +1,8 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
 .artists__wrapper{
     /* border: 1px dotted black; */
     /* padding: 10px;
@@ -6,6 +11,7 @@
     width: 100%;
     justify-content: center;
     text-decoration: none;
+    
 }
 
 .artists__allArtists{
@@ -25,6 +31,7 @@
     margin: 0px;
     padding: 0px;
     text-decoration: none;
+    margin-left: 35px;
 }
 
 .artists__li {
@@ -36,6 +43,10 @@
     /* background-color: black; */
     /* above line if commented in will darken on hover */
   }
+
+  .artists__li a {
+      text-decoration: none;
+  } 
 
 .artists__image {
     justify-content: center;
@@ -50,4 +61,5 @@
 .artists__name {
     text-align: center;
     text-decoration: none;
+    color: red;
 }

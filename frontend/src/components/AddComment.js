@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams ,useHistory} from 'react-router-dom';
 import { addIndividualVenueComment } from '../store/venues';
 import { useDispatch, useSelector } from 'react-redux';
-
+import './AddComment.css'
 
 function AddComment() {
     const { venueId } = useParams();
@@ -29,9 +29,10 @@ function AddComment() {
             alert("Please limit your comment to 255 Characters")
         }
     }
+ 
 
     return (
-        <section>
+        <section className="add-comment-wrapper">
             <form onSubmit={handleSubmit}>
                 <input
                 className="add-comment-field"

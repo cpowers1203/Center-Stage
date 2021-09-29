@@ -26,8 +26,7 @@ function Comment() {
         return +comment.venueId === +venueId
     })
     
-    console.log("THIS IS COMMENTS", comments)
-    console.log("THIS IS STATE", commentsState)
+
     return (
         <div>                
             {comments?.map((comment) => {
