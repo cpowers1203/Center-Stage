@@ -22,11 +22,9 @@ const getVenueComments = (comments) => ({
     comments
 })
 
-const addVenueComment = (userId, comment, venueId) => ({
+const addVenueComment = ( comment) => ({
     type: ADD_VENUE_COMMENT,
-    payload: {
-        userId, comment, venueId
-    }
+    comment
 })
 
 const editVenueComment = (comment) => ({
@@ -66,6 +64,7 @@ export const getIndividualVenueComments = (venueId) => async (dispatch) => {
         const venueComments = await res.json()
         dispatch(getVenueComments(venueComments))
     }
+    return
 }
 
 export const addIndividualVenueComment = (userId, comment, venueId) => async (dispatch) => {
@@ -89,8 +88,9 @@ export const editAComment = (venueId, commentId, comment) => async (dispatch) =>
     if (res.ok) {
         const updatedComment = await res.json()
         dispatch(editVenueComment(updatedComment))
+        return updatedComment
     }
-    return
+    
 }
 
 export const deleteComment = (venueId, commentId) => async (dispatch) => {
@@ -98,7 +98,7 @@ export const deleteComment = (venueId, commentId) => async (dispatch) => {
         method: 'POST'
     })
     if (res.ok) {
-        dispatch(deleteVenueComment(venueId, commentId))
+        dispatch(deleteVenueComment(commentId, venueId))
     }
     return
 }
@@ -121,12 +121,15 @@ const venueReducer = (state = initialState, action) => {
             })
             return newState
         case ADD_VENUE_COMMENT:
-            newState.comments[action.payload.comment.id] = action.payload.comment
+            newState.comments[action.comment.id] = action.comment
             return newState
         case EDIT_COMMENT:
+            newState.comments = {...newState.comments}
             newState.comments[action.comment.id] = action.comment
             return newState
         case REMOVE_COMMENT:
+            newState.comments = { ...newState.comments }
+            console.log(action.payload, "IAM THE PAYLOAD")
             delete newState.comments[action.payload.commentId]
             return newState
         default: return state

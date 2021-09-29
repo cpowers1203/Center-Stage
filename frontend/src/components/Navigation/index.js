@@ -40,7 +40,7 @@ function Navigation({ isLoaded }){
         <div className="navbar__venue-link">
           <NavLink exact to ="/venues">Venues</NavLink>
         </div>
-        <div>
+        <div className="navbar__buttons">
           {isLoaded && sessionLinks}
         </div>
       </div>

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function AddComment() {
     const { venueId } = useParams();
-    const currentUser = useSelector(state => state.sessions.user)
+    const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory();
     const userId = currentUser.id

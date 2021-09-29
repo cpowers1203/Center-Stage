@@ -14,17 +14,20 @@ function Comment() {
 
     useEffect(() => {
         (async () => {
-            await dispatch(getIndividualVenueComments(venueId))
+           await dispatch(getIndividualVenueComments(venueId))
         })()
     }, [venueId, dispatch])
+    
 
 
     const commentsState = useSelector(state => Object.values(state.venues.comments))
     const comments = commentsState.filter((comment) => {
-        return comment.venueId === +venueId
+        console.log(comment, comment.venueId, "I AM THE COMMENT")
+        return +comment.venueId === +venueId
     })
     
-
+    console.log("THIS IS COMMENTS", comments)
+    console.log("THIS IS STATE", commentsState)
     return (
         <div>                
             {comments?.map((comment) => {

@@ -34,9 +34,10 @@ router.get('/:id(\\d+)/concerts', asyncHandler(async (req, res) => {
 }))
 
 router.post('/:id(\\d+)/comments', asyncHandler(async (req, res) => {
-    const venueId = req.params
+    const venueId = req.params.id
     const { userId, comment } = req.body
-    const commentSuccess = await VenueComment.create({ comment, userId, venueId })
+    console.log(venueId, "I AM THE VENUE")
+    const commentSuccess = await VenueComment.create({ comment: comment.commentBody, userId, venueId })
     return res.json(commentSuccess)
 }))
 

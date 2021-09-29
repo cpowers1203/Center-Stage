@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {useParams} from 'react-router-dom'
 import { getIndividualVenue } from '../store/venues'
 import Comment from './Comment'
+import AddComment from './AddComment'
 
 
 function IndividualVenue() {
@@ -28,6 +29,7 @@ function IndividualVenue() {
             </div>
             <div className="venue__comments">
                 <Comment />
+                <AddComment />
             </div>
         </div>
     )

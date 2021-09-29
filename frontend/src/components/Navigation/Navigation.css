@@ -41,3 +41,15 @@
 .navbar__logo--image:hover {
     opacity: 70%;
 }
+
+.navbar__buttons button {
+    background-color: white;
+    color: red;
+    border: 5px white;
+    border-radius: 12px;
+    width: 95px;
+    height: 40px;
+    align-self: center;
+    margin: 5px;
+}
+
