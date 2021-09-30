@@ -30,6 +30,8 @@
 .comment-body-p {
     /* max-width: 320px; */
     word-break: break-all;
+    margin-top: 5px;
+    margin-bottom: 5px;
     white-space: normal;
     color: black
 }
