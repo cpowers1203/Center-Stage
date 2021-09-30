@@ -14,7 +14,7 @@ The Instasplash live link can be found here: <a href='https://instasplash.heroku
 Center Stage makes heavy use of React and Redux. The react to display logic is handled by the React Libraries. The Redux is used to handle all state management,
 with api calls to the backend server to retrieve data.
 
-##Backend Overview
+## Backend Overview
 
 * <h1>Backend Technologies Used</h1>
 
@@ -22,6 +22,6 @@ Center Stage's backend server runs with Express, PostgreSQL, Sequelize, and Fake
 as JavaScript being the language used in both. PostgreSQL was the database of choice because it is more familiar than any other database. With Sequelize's seemless integration with 
 PostgresSql made it the easy choice for Center Stage's ORM. And Finally, Faker was used to create fake data to populate the app as we wait for more users.
 
-##Conclusion 
+## Conclusion 
 
 Center Stage's can and will be the way we keep up with our favorite artists. So. Are you Brave enough to join me Center Stage?
