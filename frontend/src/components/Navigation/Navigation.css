@@ -43,9 +43,6 @@
 
 }
 
-.navbar__logo--image:hover {
-    opacity: 70%;
-}
 
 .navbar__buttons button {
     background-color: white;
