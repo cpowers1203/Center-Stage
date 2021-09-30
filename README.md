@@ -1,7 +1,7 @@
 # Center-Stage
 Center Stage is a way to know when and where your favorite artists are going to be live. You can follow your favorite artists to see when they're coming
 to a city near you. Or comment on your favorite local venue to let the world know what your experience was like! Center Stage makes sure that you are in the spotlight!
-The Instasplash live link can be found here: <a href='hhttps://center-stage-app.herokuapp.com/'>Center Stage</a> !!!
+The Instasplash live link can be found here: <a href='hhttps://center-stage-app.herokuapp.com/'>Center Stage</a> !!! https://center-stage-app.herokuapp.com/
 
 ## Technologies
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
