@@ -110,7 +110,6 @@ const artistReducer = (state = initialState, action) => {
             newState.following[artistId2] =  {userId: userId2, artistId: artistId2}
             return newState
         case REMOVE_FOLLOW:
-            console.log(action.payload.artistId)
             delete newState.following[action.payload.artistId]
             return newState
 

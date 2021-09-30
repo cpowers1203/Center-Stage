@@ -5,15 +5,16 @@ import SignupFormPage from './components/SignupFormPage';
 // import LoginFormPage from "./components/LoginFormPage";
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
-import { Modal } from './context/Modal';
+
 import Artists from './components/Artist';
 import IndividualArtist from './components/IndividualArtist';
 import Venues from './components/Venues';
 import IndividualVenue from './components/IndividualVenue';
+import Home from './components/Home'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -47,6 +48,9 @@ function App() {
           <Route path='/venues/:venueId' exact={true}>
             <IndividualVenue />
           </Route>
+          <Route path='/'>
+            <Home />
+           </Route>
         </Switch>
       )}
     </>

@@ -52,7 +52,6 @@ export const getIndividualVenue = (venueId) => async (dispatch) => {
     const res = await csrfFetch(`/api/venues/${venueId}`)
     if (res.ok) {
         const venue = await res.json()
-        console.log(venue, "IAM THE VENUE")
         dispatch(getOneVenue(venue))
     }
 }
@@ -129,7 +128,6 @@ const venueReducer = (state = initialState, action) => {
             return newState
         case REMOVE_COMMENT:
             newState.comments = { ...newState.comments }
-            console.log(action.payload, "IAM THE PAYLOAD")
             delete newState.comments[action.payload.commentId]
             return newState
         default: return state

@@ -1,5 +1,8 @@
+
+
 li {
     list-style: none;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .venues__wrapper {
@@ -7,6 +10,7 @@ li {
     width: 100%;
     justify-content: center;
     text-decoration: none;
+
 }
 
 .venues__allVenues {
