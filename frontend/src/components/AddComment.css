@@ -1,4 +1,9 @@
 
+.add-comment-wrapper {
+    margin-top: 25px;
+    padding: 5px;
+}
+
 .add-comment-field { 
     width: 80%;
 }

@@ -43,7 +43,7 @@ function IndividualVenue() {
                 </div>
                 <div className="venue__comments">
                     <Comment />
-                    <AddComment />
+                    <AddComment className="venue__addComment"/>
                 </div>
             </div>
         )

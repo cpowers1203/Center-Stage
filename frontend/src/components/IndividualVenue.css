@@ -36,7 +36,7 @@
 .venue__comments {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 10px;
     padding-left: 1em;
     justify-content: center;
     align-content: center;
@@ -45,3 +45,4 @@
     border: 2.5px red solid;
     width: 400px;
 }
+
