@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { editAComment } from "../store/venues"
-import { useParams, useHistory } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import './EditCommentForm.css'
 
 function EditCommentForm({ oldComment, hideEdit, commentId }) {
     const { venueId } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory()
 
     const [commentBody, setCommentBody] = useState(oldComment)
 
@@ -21,8 +21,8 @@ function EditCommentForm({ oldComment, hideEdit, commentId }) {
         <div>
             <textarea value={commentBody} onChange={(e) => setCommentBody(e.target.value)} />
             <div className="edit-caption-btn">
-                <div className="edit-caption-btn" onClick={(e) => submitEdit(e)}><i className="fas fa-sync-alt"></i></div>
-                <div className="edit-caption-btn" onClick={hideEdit}><i className="far fa-times-circle"></i></div>
+                <button className="edit-caption-btn-edit" onClick={(e) => submitEdit(e)} disabled={commentBody.length === 0}>Post</button>
+                <button className="edit-caption-btn-cancel" onClick={hideEdit}>Cancel</button>
             </div>
         </div>
 
