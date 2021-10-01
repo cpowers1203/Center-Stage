@@ -1,0 +1,21 @@
+.edit-caption-btn-edit {
+    margin-right: 0.25em;
+    background-color: red;
+    color: white;
+    border: 5px white;
+    border-radius: 12px;
+    width: 47px;
+    height: 25px;
+    align-self: center;
+}
+
+.edit-caption-btn-cancel {
+    margin-right: 0.25em;
+    background-color: red;
+    color: white;
+    border: 5px white;
+    border-radius: 12px;
+    width: 55px;
+    height: 25px;
+    align-self: center;
+}
