@@ -42,7 +42,7 @@ function AddComment() {
                 value={commentBody}
                 onChange={(e) => setCommentBody(e.target.value)}
                 />
-                <button className="add-comment-submit" type="submit" disabled={!commentBody.length} >Post</button>
+                <button className="add-comment-submit" type="submit" disabled={!commentBody.trim().length} >Post</button>
             </form>
         </section>
     )
