@@ -8,23 +8,24 @@ button {
 
 
 .edit-caption-btn-edit {
-    margin-right: 0.25em;
-    background-color: red;
-    color: white;
-    border: 5px white;
-    border-radius: 12px;
-    width: 47px;
-    height: 25px;
-    align-self: center;
+    text-decoration: none;
+    background-color: white;
+    border: none;
+    font-weight: bold;
+}
+
+.edit-caption-btn-edit:enabled {
+    text-decoration: none;
+    background-color: white;
+    border: none;
+    font-weight: bold;
+    color: red
 }
 
 .edit-caption-btn-cancel {
-    margin-right: 0.25em;
-    background-color: red;
-    color: white;
-    border: 5px white;
-    border-radius: 12px;
-    width: 55px;
-    height: 25px;
-    align-self: center;
+    text-decoration: none;
+    background-color: white;
+    border: none;
+    font-weight: bold;
+    color: red
 }
