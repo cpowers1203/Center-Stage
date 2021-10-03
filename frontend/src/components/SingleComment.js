@@ -39,8 +39,8 @@ function SingleComment({ comment }) {
                     {
                         comment?.userId === user.id &&
                         <div className="edit-comment-btns">
-                            <button className="edit-comment-btn" onClick={displayEdit}>edit</button>
-                            <button className="delete-comment-btn" onClick={(e) => handleDelete(e)}>delete</button>
+                            <button className="edit-comment-btn" onClick={displayEdit}>Edit</button>
+                            <button className="delete-comment-btn" onClick={(e) => handleDelete(e)}>Delete</button>
                         </div>
                     }
                 </>
