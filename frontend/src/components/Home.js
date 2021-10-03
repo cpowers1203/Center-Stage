@@ -18,8 +18,8 @@ function Home() {
                 </div>
                 <div className="about-me-section">
                     <h2>Our Contributor</h2>
-                    <a href='https://github.com/cpowers1203' ><img src={Pat} alt='' onMouseOver={(e) => e.currentTarget.src = github} onMouseOut={(e) => e.currentTarget.src = Pat} /></a>
-                    <h3>Colton Powers</h3>
+                    <a href='https://github.com/cpowers1203' target="_blank" rel="noopener noreferrer"><img src={Pat} alt='' onMouseOver={(e) => e.currentTarget.src = github} onMouseOut={(e) => e.currentTarget.src = Pat} /></a>
+                    <a href='https://www.linkedin.com/in/colton-powers-95bba315a/' target="_blank" rel="noopener noreferrer"><h3>Colton Powers</h3></a>
                 </div>
             </div>
         )
@@ -36,8 +36,8 @@ function Home() {
                 </div>
                 <div className="about-me-section">
                     <h2>Our Contributor</h2>
-                    <a href='https://github.com/cpowers1203' ><img src={Pat} alt='' onMouseOver={(e) => e.currentTarget.src = github} onMouseOut={(e) => e.currentTarget.src = Pat} /></a>
-                    <a href='https://www.linkedin.com/in/colton-powers-95bba315a/'><h3>Colton Powers</h3></a>
+                    <a href='https://github.com/cpowers1203' target="_blank" rel="noopener noreferrer"><img src={Pat} alt='' onMouseOver={(e) => e.currentTarget.src = github} onMouseOut={(e) => e.currentTarget.src = Pat} /></a>
+                    <a href='https://www.linkedin.com/in/colton-powers-95bba315a/' target="_blank" rel="noopener noreferrer"><h3>Colton Powers</h3></a>
                 </div>
             </div>
         )
