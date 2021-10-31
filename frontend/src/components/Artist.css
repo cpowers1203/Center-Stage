@@ -27,11 +27,11 @@ body {
 .artists__ul {
     display: flex;
     flex-wrap: wrap;
+    max-width: 50%;
+    margin-left: 27%;
     list-style: none;
-    margin: 0px;
     padding: 0px;
     text-decoration: none;
-    margin-left: 35px;
 }
 
 .artists__li {
