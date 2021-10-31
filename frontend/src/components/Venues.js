@@ -20,13 +20,13 @@ function Venues() {
         <div className="venues__wrapper">
             <div className="venues__allVenues">
                 <ul className="venues_ul">
-                    {venues.map((venue) =>
-                        <li key={venue.id} className="venues__li">
-                            <NavLink to={`/venues/${venue.id}`}>
-                                <img className="venues__image" src={venue.pictureUrl} alt=""></img>
-                                <h2 className="venues__name">{venue.name}</h2>
-                            </NavLink>
-                        </li>
+                {venues.map((venue) =>
+                    <li key={venue.id} className="venues__li">
+                        <NavLink to={`/venues/${venue.id}`}>
+                            <img className="venues__image" src={venue.pictureUrl} alt=""></img>
+                            <h2 className="venues__name">{venue.name}</h2>
+                        </NavLink>
+                    </li>
                 )}
                 </ul>
             </div>
