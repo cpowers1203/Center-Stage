@@ -21,12 +21,12 @@ li {
     text-decoration: none;
 }
 
-.venues__ul {
+.venues_ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    max-width: 50%;
-    margin-left: 25%;
+    max-width: 100%;
+    margin-left: 2%;
     padding: 0px;
     text-decoration: none;
 }
