@@ -8,9 +8,9 @@ li {
 .venues__wrapper {
     display: flex;
     width: 100%;
+    margin-top: 20px;
     justify-content: center;
     text-decoration: none;
-
 }
 
 .venues__allVenues {
@@ -19,6 +19,7 @@ li {
     max-width: 50%;
     padding: none;
     text-decoration: none;
+    
 }
 
 .venues_ul {
@@ -26,7 +27,7 @@ li {
     flex-wrap: wrap;
     list-style: none;
     max-width: 100%;
-    margin-left: 2%;
+    margin-left: 5%;
     padding: 0px;
     text-decoration: none;
 }
